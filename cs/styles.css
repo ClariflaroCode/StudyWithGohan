@@ -22,11 +22,13 @@ h1 {
 }
 ol {
     list-style: none;
+    padding: 0%;
 }
 li {
     background-color: white;
     border: 1px solid white;
     border-radius: 5px;
+    margin: 5% 0%;
 }
 
 #linea{
@@ -110,5 +112,22 @@ p{
     font-family:"Inconsolata", monospace; ;
 }
 .tarjeta-con-titulo {
-    
+
+}
+
+.tarjeta header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.tarjeta footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.tarjeta .content {
+    height: 60%;
+    margin: 5%;
+    overflow-y: scroll;
+
 }

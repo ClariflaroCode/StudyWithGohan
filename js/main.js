@@ -11,3 +11,4 @@ function agregarTarea(){
 //function tomarTarea(){
 //    let tareaAPasar = document.getElementById("tarea")
 //}
+
