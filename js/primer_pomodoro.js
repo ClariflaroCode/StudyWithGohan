@@ -64,6 +64,6 @@ document.getElementById("button-next").addEventListener("click", stopTimer);
 function stopTimer() {
     let tiempoConcentracion = document.getElementById("reloj").innerHTML; 
 
-    localStorage.setItem("timerPomodoro", String(tiempoConcentracion));
+    sessionStorage.setItem("timerPomodoro", String(tiempoConcentracion));
     console.log(tiempoConcentracion);
 }
