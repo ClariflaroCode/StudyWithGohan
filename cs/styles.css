@@ -29,6 +29,7 @@ li {
     border: 1px solid white;
     border-radius: 5px;
     margin: 5% 0%;
+    word-wrap: break-word; /*Esto aparentemente hace que si la palabra es muy larga la corte y no se salga del contenido ni me ponga un scroll, o cosas feas*/
 }
 
 #linea{
@@ -127,5 +128,4 @@ p{
     height: 60%;
     margin: 5%;
     overflow-y: auto;
-
 }

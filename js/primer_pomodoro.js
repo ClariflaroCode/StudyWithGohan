@@ -67,3 +67,22 @@ function stopTimer() {
     sessionStorage.setItem("timerPomodoro", String(tiempoConcentracion));
     console.log(tiempoConcentracion);
 }
+
+
+function traerLista() {
+    cantidad = Number(sessionStorage.getItem("cantidadTareas"));
+    if (cantidad != null) {
+        for (let i = 0; i < cantidad; i++) {
+            let idTareaEnProgreso = "tarea_" + i + "_tomada"; 
+            let idTarea = "tarea" + i;
+            let tarea = sessionStorage.getItem(idTareaEnProgreso);
+            
+            if(tarea != null) {                
+                document.getElementById("doing-list").innerHTML += `<li id="${idTarea}">${tarea}</li>`;
+            }
+    
+        }
+    } 
+}
+
+traerLista();

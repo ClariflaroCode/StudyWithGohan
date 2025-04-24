@@ -29,6 +29,8 @@ li {
     border: 1px solid white;
     border-radius: 5px;
     width: 80%;
+    word-wrap: break-word; /*Esto aparentemente hace que si la palabra es muy larga la corte y no se salga del contenido ni me ponga un scroll, o cosas feas*/
+    
 }
 
 #linea{
@@ -77,12 +79,6 @@ footer {
     justify-content: center;
 }
 
-
-button {
-    font-family: "Indie Flower", cursive;
-    padding: 1%;
-    border-radius: 5px;
-}
 #button-next{
     font-family: "Indie Flower", cursive;
     padding: 1%;
@@ -98,7 +94,6 @@ button {
     flex-direction: column;
     justify-content: center;
 }
-
 .tarjeta .content {
     height: 60%;
     margin: 5%;
