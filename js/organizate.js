@@ -39,9 +39,9 @@ function traerListaDoing() {
             let idTareaEnProgreso = "tarea_" + i + "_tomada"; 
             let idTarea = "tarea" + i;
             let tarea = sessionStorage.getItem(idTareaEnProgreso);
-            
+            let identificadorCheck = "checkbox" + i;
             if(tarea != null) {                
-                document.getElementById("doing-list").innerHTML += `<li id="${idTarea}">${tarea}</li>`;
+                document.getElementById("doing-list").innerHTML += `<div class="list-item-checkbox"> <li id="${idTarea}">${tarea}</li>`+ `<input class="finalizaste-tarea" type="checkbox" id="${identificadorCheck}"> </div>`;
             }
     
         }
@@ -56,11 +56,13 @@ function traerListaToDo() {
     for (let i = 0; i < cantidad; i++) {
 
         let identificador = "tarea" + i;
-        let tarea = sessionStorage.getItem(identificador);
+        let tarea = sessionStorage.getItem(identificador).toString();
+
+        let identificadorCheck = "checkbox" + i;
 
         if (tarea) {
             
-            document.getElementById("to-do-list").innerHTML += `<li id="${identificador}">${tarea}</li>`;
+            document.getElementById("to-do-list").innerHTML += `<div class="list-item-checkbox"> <li id="${identificador}">${tarea}</li>` + `<input class="tomaste-tarea" type="checkbox" id="${identificadorCheck}"> </div>`;
         }
 
     }

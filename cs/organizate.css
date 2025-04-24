@@ -22,11 +22,15 @@ h1 {
 }
 ol {
     list-style: none;
+    padding: 0%;
 }
 li {
     background-color: white;
     border: 1px solid white;
     border-radius: 5px;
+    width: 80%;
+    word-wrap: break-word; /*Esto aparentemente hace que si la palabra es muy larga la corte y no se salga del contenido ni me ponga un scroll, o cosas feas*/
+    
 }
 
 #linea{
@@ -94,13 +98,7 @@ button {
     justify-content: space-around;
 }
 
-#musiquita-lofi{
-    height: 10%;
-    width: 300px;
-    background-color: #EEEEEE;
-    border: 1px solid #EEEEEE;
-    border-radius: 5px;
-}
+
 p{
     color: white;
     font-size: 50px;
@@ -110,4 +108,22 @@ p{
 }
 .tarjeta-con-titulo {
     height: 100%;
+}
+.tarjeta header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.tarjeta .content {
+    height: 60%;
+    margin: 5%;
+    overflow-y: auto;
+}
+.list-item-checkbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5% 0%;
+
 }
