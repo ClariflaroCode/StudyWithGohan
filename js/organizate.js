@@ -1,4 +1,4 @@
-let timer= localStorage.getItem("timerPomodoro");
+let timer= sessionStorage.getItem("timerPomodoro");
 document.getElementById("tiempo-pomodoro").innerHTML = timer;
 console.log(timer);
 

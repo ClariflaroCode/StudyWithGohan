@@ -28,7 +28,7 @@ li {
     background-color: white;
     border: 1px solid white;
     border-radius: 5px;
-    margin: 5% 0%;
+    width: 80%;
 }
 
 #linea{
@@ -92,40 +92,23 @@ button {
     border: 2px solid #111111;
     text-decoration: none;
 }
-#encabezado {
-    display: flex;
-    justify-content: space-around;
-}
-
-#musiquita-lofi{
-    height: 10%;
-    width: 300px;
-    background-color: #EEEEEE;
-    border: 1px solid #EEEEEE;
-    border-radius: 5px;
-}
-p{
-    color: white;
-    font-size: 50px;
-    margin: 1%;
-    text-align: center;
-    font-family:"Inconsolata", monospace; ;
-}
-
 
 .tarjeta header{
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
-.tarjeta footer{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
+
 .tarjeta .content {
     height: 60%;
     margin: 5%;
     overflow-y: auto;
+}
+.list-item-checkbox {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+    margin: 5% 0%;
 
 }
