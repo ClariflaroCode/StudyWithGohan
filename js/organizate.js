@@ -1,4 +1,14 @@
 
+const tiempoDeRecreos = sessionStorage.getItem("timerRecreo");
+if (tiempoDeRecreos == null) {sessionStorage.setItem("timerRecreo", "00:05:00");}
+
+
+
+let cantidadRecreos = sessionStorage.getItem("CantidadDeRecreos");
+recreos = Number(cantidadRecreos);
+recreos++
+sessionStorage.setItem("CantidadDeRecreos", String(recreos));
+
 
 let timer= sessionStorage.getItem("timerPomodoro");
 document.getElementById("tiempo-pomodoro").innerHTML = timer;
@@ -13,7 +23,7 @@ let flag = false;
 
 
 function temporizador() {
-    console.log("estoy en temporizador");
+    
     segundos = segundos - 1;
 
     if (segundos == -1) {
@@ -152,23 +162,6 @@ function guardarTareasFinalizadas() {
 
 }
 
-/*
-function flagCambio() {
-    guardarTareasFinalizadas()
-    //window.location.href = "/pomodoro.html";
-    // Agregar al historial una entrada para que el usuario pueda volver a la página del temporizador
-    //window.history.pushState(null, "", window.location.href); // Mantiene la página actual en el historial
-
-    // Ahora reemplazar la entrada actual con la página de pomodoro
-    // Primero, usamos pushState para agregar una nueva entrada al historial
-    window.history.pushState(null, "", window.location.href);
-        
-    // Luego, navegamos a la página destino usando assign
-    setTimeout(() => {
-        window.location.assign("/pomodoro.html");
-    }, 1000);
-}
-    */
 function mostrarPopUp() {
     //Esta es la función que me va a redirigir a la página que corresponda. 
     //1. Traer el pop-up para mostrarlo. 
@@ -187,3 +180,19 @@ function cambiarPagina() {
     guardarTareasFinalizadas();
     window.location.assign("/fin.html");
 }
+
+
+
+
+function actualizarFecha() {
+    const currentDate = new Date();
+
+    const dia = currentDate.getDate();
+    const mes = currentDate.getMonth() + 1; 
+    const yearActual = currentDate.getFullYear();
+
+    const fecha = dia.toString() + "/"+ mes.toString() +"/" + yearActual.toString();
+
+    document.getElementById("fecha-actual").innerHTML = fecha;
+}
+actualizarFecha();

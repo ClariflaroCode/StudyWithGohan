@@ -40,3 +40,17 @@ function agregarTarea() {
  
 
 }
+
+
+function actualizarFecha() {
+    const currentDate = new Date();
+
+    const dia = currentDate.getDate();
+    const mes = currentDate.getMonth() + 1; 
+    const yearActual = currentDate.getFullYear();
+
+    const fecha = dia.toString() + "/"+ mes.toString() +"/" + yearActual.toString();
+
+    document.getElementById("fecha-actual").innerHTML = fecha;
+}
+actualizarFecha();

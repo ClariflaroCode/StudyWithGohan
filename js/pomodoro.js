@@ -1,4 +1,7 @@
-
+const cantidadPomos = sessionStorage.getItem("CantidadDePomodoros");
+numeroDePomodoros = Number(cantidadPomos);
+numeroDePomodoros++;
+sessionStorage.setItem("CantidadDePomodoros", String(numeroDePomodoros));
 
 let reloj = document.getElementById("reloj");
 let segundos = 15;
@@ -9,7 +12,7 @@ let flag = false;
 
 
 function temporizador() {
-    console.log("estoy en temporizador");
+   
     segundos = segundos - 1;
 
     if (segundos == -1) {
@@ -31,8 +34,6 @@ function temporizador() {
     reloj.innerHTML = horasMostrar + ":" + minutosMostrar + ":" + segundosMostrar;
 
     if ((horas === 0) && (minutos === 0) && (segundos === 0)) {
-        //window.location.href = window.location.origin + "/pomodoro.html";
-        //window.location.assign("../pomodoro.html");
         setTimeout(() => {
             mostrarPopUp();
         }, 1000);
@@ -42,13 +43,6 @@ function temporizador() {
 
 }
 temporizador();
-
-
-
-
-//si el temporizador llega a cero usando el objeto window podremos cambiar la url y redireccionarlo a la otra pagina. OJO porque el replace me reemplaza la ultima unidad del stack y el push la agrega al final, queremos agregarla al final. 
-
-
 
 function traerListaDoing() {
 
@@ -62,48 +56,8 @@ function traerListaDoing() {
         }
     }
 
-    /**
-     *     
-     * cantidad = Number(sessionStorage.getItem("cantidadTareas"));
-    if (cantidad != null) {
-        for (let i = 0; i < cantidad; i++) {
-            let idTareaEnProgreso = "tarea_" + i + "_tomada"; 
-            let idTarea = "tarea" + i;
-            let tarea = sessionStorage.getItem(idTareaEnProgreso);
-            let identificadorCheck = "checkbox" + i;
-            if(tarea != null) {                
-                document.getElementById("doing-list").innerHTML += `<div class="list-item-checkbox"> <li id="${idTarea}">${tarea}</li>`+ `<input class="finalizaste-tarea" type="checkbox" id="${identificadorCheck}"> </div>`;
-            }
-    
-        }
-    } 
-     * 
-     */
-
 }
 traerListaDoing();
-
-/*
-function flagCambio() {
-    // Cuando termina el pomodoro, vamos a organizate
-
-    //window.location.href = "/organizate.html";
-    // Agregar al historial una entrada para que el usuario pueda volver a la página del temporizador
-    //window.history.pushState(null, "", window.location.href); // Mantiene la página actual en el historial
-
-    // Ahora reemplazar la entrada actual con la página de pomodoro
-     // Primero, usamos pushState para agregar una nueva entrada al historial
-     window.history.pushState(null, "", window.location.href);
-    
-     // Luego, navegamos a la página destino usando assign
-     setTimeout(() => {
-         window.location.assign("/organizate.html");
-     }, 1000);
-
-}
-     */
-
-
 
 function mostrarPopUp() {
     //Esta es la función que me va a redirigir a la página que corresponda. 
@@ -119,6 +73,20 @@ function mostrarPopUp() {
 document.getElementById("stop").addEventListener("click", cambiarPagina);
 
 function cambiarPagina() {
-    guardarTareasFinalizadas();
     window.location.assign("/fin.html");
 }
+
+
+
+function actualizarFecha() {
+    const currentDate = new Date();
+
+    const dia = currentDate.getDate();
+    const mes = currentDate.getMonth() + 1; 
+    const yearActual = currentDate.getFullYear();
+
+    const fecha = dia.toString() + "/"+ mes.toString() +"/" + yearActual.toString();
+
+    document.getElementById("fecha-actual").innerHTML = fecha;
+}
+actualizarFecha();
