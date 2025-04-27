@@ -44,7 +44,7 @@ function temporizador() {
 
     reloj.innerHTML = horasMostrar + ":" + minutosMostrar + ":" + segundosMostrar;
 
-    if ((horas === 0) && (minutos === 0) && (segundos === 1)) {
+    if ((horas == 0) && (minutos == 0) && (segundos == 0)) {
         //window.location.href = window.location.origin + "/pomodoro.html";
         //window.location.assign("../pomodoro.html");
 

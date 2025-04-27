@@ -4,9 +4,13 @@ numeroDePomodoros++;
 sessionStorage.setItem("CantidadDePomodoros", String(numeroDePomodoros));
 
 let reloj = document.getElementById("reloj");
-let segundos = 15;
-let minutos = 0; 
-let horas = 0;
+
+let timer= sessionStorage.getItem("timerPomodoro");
+const miArray = timer.split(":");
+
+let segundos = Number(miArray[2]);
+let minutos = Number(miArray[1]); 
+let horas = Number(miArray[0]);
 
 let flag = false;
 
@@ -33,7 +37,7 @@ function temporizador() {
 
     reloj.innerHTML = horasMostrar + ":" + minutosMostrar + ":" + segundosMostrar;
 
-    if ((horas === 0) && (minutos === 0) && (segundos === 0)) {
+    if ((horas == 0) && (minutos == 0) && (segundos == 0)) {
         setTimeout(() => {
             mostrarPopUp();
         }, 1000);
