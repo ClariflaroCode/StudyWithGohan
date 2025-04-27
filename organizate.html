@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Organizate</title>
     <link rel="stylesheet" href="cs/organizate.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap" rel="stylesheet">
 </head>
-<body>
+<body id="fondo">
+    <div id="transparencia">
+    </div>
     <header>
         <h1>Study with Gohan!</h1>
         <div id="fecha-hoy">
@@ -20,8 +22,18 @@
         </div>
         <div id="linea"></div>
     </header>
+
+    <dialog id="pop-up">
+        <h2>Ha concluido el recreo</h2>
+        <div>
+            <a id="button-continuar" href="pomodoro.html" class="button">Pasar al siguiente pomodoro</a>
+            <a id="button-fin" href="fin.html" class="button">Finalizar Jornada</a>
+        </div>
+    </dialog>
+
     <main>
         <h2>Organízate para el siguiente pomodoro </h2>
+
         <div id="tarjetitas">
             <section>
                 <h2>Tiempo de hoy</h2>
@@ -57,7 +69,8 @@
         </div>
     </main>
     <footer>
-        <a id="button-next" href="fin.html">STOP!</a>
+        <button id="stop" class="button" type="text"> STOP!</button>
+        <!--<a id="button-next" href="fin.html" class="button">STOP!</a> -->
     </footer>
     <script type="text/javascript" src="js/organizate.js"></script>
 </body>

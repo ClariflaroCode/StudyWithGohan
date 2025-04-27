@@ -34,8 +34,11 @@ let reloj = document.getElementById("reloj");
 let segundos = 0;
 let minutos = 0; 
 let horas = 0;
+
 function contar() {
+    
     segundos = segundos + 1;
+
     if (segundos == 60) {
         minutos = minutos + 1;
         segundos = 0;
@@ -48,12 +51,15 @@ function contar() {
     minutosMostrar = minutos;
     segundosMostrar = segundos;
 
+    //Estética en el html
+
     if(horas < 10) horasMostrar = "0" + horas;
     if(minutos < 10) minutosMostrar = "0" + minutos;
     if(segundos < 10) segundosMostrar = "0" + segundos;
 
     reloj.innerHTML = horasMostrar + ":" + minutosMostrar + ":" + segundosMostrar;
 
+    //el llamado a la función se hace cada 1000 milisegundos (1 segundo)
     return setTimeout(() => contar(), 1000);
 }
 contar();
@@ -62,27 +68,27 @@ contar();
 document.getElementById("button-next").addEventListener("click", stopTimer);
 
 function stopTimer() {
-    let tiempoConcentracion = document.getElementById("reloj").innerHTML; 
 
+    //Guardamos el tiempo de concentración del usuario en una tarea para poder usarlo como el tiempo de los próximos pomodoros y que sean lo más personalizados y productivos posible cada uno de los bloques. 
+    const tiempoConcentracion = document.getElementById("reloj").innerHTML; 
     sessionStorage.setItem("timerPomodoro", String(tiempoConcentracion));
+
     console.log(tiempoConcentracion);
 }
 
 
 function traerLista() {
-    cantidad = Number(sessionStorage.getItem("cantidadTareas"));
-    if (cantidad != null) {
-        for (let i = 0; i < cantidad; i++) {
-            let idTareaEnProgreso = "tarea_" + i + "_tomada"; 
-            let idTarea = "tarea" + i;
-            let tarea = sessionStorage.getItem(idTareaEnProgreso);
-            
-            if(tarea != null) {                
-                document.getElementById("doing-list").innerHTML += `<li id="${idTarea}">${tarea}</li>`;
-            }
-    
+
+    //1.Traer la lista del storage y convertirlo a formato JSON para que no sea sólo un string y poder tratarlo como un arreglo. 
+    const tareas = JSON.parse(sessionStorage.getItem("TareasEnProgreso"));
+
+    //2. Si existe una lista, recorrerla y mostrar el contenido de cada celda como un list item en el html. 
+    if (tareas != null) {
+        for (let i = 0; i < tareas.length; i++) {
+            document.getElementById("doing-list").innerHTML += `<li id="${i}">${tareas[i]}</li>`;
         }
-    } 
+    }
+
 }
 
 traerLista();
