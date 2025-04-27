@@ -1,6 +1,5 @@
 
-const tiempoDeRecreos = sessionStorage.getItem("timerRecreo");
-if (tiempoDeRecreos == null) {sessionStorage.setItem("timerRecreo", "00:05:00");}
+
 
 
 
@@ -12,12 +11,19 @@ sessionStorage.setItem("CantidadDeRecreos", String(recreos));
 
 let timer= sessionStorage.getItem("timerPomodoro");
 document.getElementById("tiempo-pomodoro").innerHTML = timer;
-console.log(timer);
+
+
+
+const tiempoDeRecreos = sessionStorage.getItem("timerRecreo");
+if (tiempoDeRecreos == null) {sessionStorage.setItem("timerRecreo", "00:05:00");}
 
 let reloj = document.getElementById("temporizador-recreo");
-let segundos = 10;
-let minutos = 0; 
-let horas = 0;
+
+const miArray = tiempoDeRecreos.split(":");
+
+let segundos = Number(miArray[2]);
+let minutos = Number(miArray[1]); 
+let horas = Number(miArray[0]);
 
 let flag = false;
 
