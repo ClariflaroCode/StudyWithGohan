@@ -23,8 +23,12 @@ function agregarTarea() {
     //2. Permitir que el usuario escriba el contenido de la tarea nueva y guardar eso en una variable.
     let nuevaTarea = window.prompt("Nueva tarea: ");
 
-    //3.AGREGAR TAREA AL FINAL si no es null
-    if (nuevaTarea != null) {
+
+    //3.AGREGAR TAREA AL FINAL si no es null Y QUE INGRESEN ALGO XD!!! tenía el problema de que podían ingresar n espacios vacíos. Así que requiero de expresiones regulares para evitar eso, es la primera vez que implemento esto en javascript pero me alegra aplicar conocimientos de ciencias de la computación 1 <3 
+    
+    const expresionRegular =  /^[A-Z]|^[0-9]|^[a-z]/; //jsjs virginia, espero no errarle :3 Pero es que empiece con mayuscula, minuscula o un digito la cadena. 
+
+    if (nuevaTarea != null && expresionRegular.test(nuevaTarea)) {
         
         tareas.push(nuevaTarea); 
 

@@ -1,8 +1,4 @@
 
-
-
-
-
 let cantidadRecreos = sessionStorage.getItem("CantidadDeRecreos");
 recreos = Number(cantidadRecreos);
 recreos++
@@ -14,8 +10,11 @@ document.getElementById("tiempo-pomodoro").innerHTML = timer;
 
 
 
-const tiempoDeRecreos = sessionStorage.getItem("timerRecreo");
-if (tiempoDeRecreos == null) {sessionStorage.setItem("timerRecreo", "00:05:00");}
+let tiempoDeRecreos = sessionStorage.getItem("timerRecreo");
+if (tiempoDeRecreos == null) {
+    sessionStorage.setItem("timerRecreo", "00:05:00");
+    tiempoDeRecreos = sessionStorage.getItem("timerRecreo");
+}
 
 let reloj = document.getElementById("temporizador-recreo");
 
@@ -24,8 +23,6 @@ const miArray = tiempoDeRecreos.split(":");
 let segundos = Number(miArray[2]);
 let minutos = Number(miArray[1]); 
 let horas = Number(miArray[0]);
-
-let flag = false;
 
 
 function temporizador() {
@@ -51,11 +48,6 @@ function temporizador() {
     reloj.innerHTML = horasMostrar + ":" + minutosMostrar + ":" + segundosMostrar;
 
     if ((horas == 0) && (minutos == 0) && (segundos == 0)) {
-        //window.location.href = window.location.origin + "/pomodoro.html";
-        //window.location.assign("../pomodoro.html");
-
-        ///OTRA POSIBILIDAD ES REEMPLAZAR TODO EL HTML EN LA MISMA PAGINA ACA CUANDO TERMINA EL POMODORO. COMO SE HACE CON EL FRAMEWORK DE REACT. 
-
         setTimeout(() => {
             mostrarPopUp();
         }, 1000);
@@ -67,9 +59,6 @@ function temporizador() {
 temporizador();
 
 
-
-
-//si el temporizador llega a cero usando el objeto window podremos cambiar la url y redireccionarlo a la otra pagina. OJO porque el replace me reemplaza la ultima unidad del stack y el push la agrega al final, queremos agregarla al final. 
 
 function traerListas() {
         //1. Traer lista de tareas de tareas en progreso
@@ -202,3 +191,39 @@ function actualizarFecha() {
     document.getElementById("fecha-actual").innerHTML = fecha;
 }
 actualizarFecha();
+
+
+document.getElementById("agregar-tarea").addEventListener("click", agregarTarea);
+
+function agregarTarea() {
+
+    //1.TRAER EL ARREGLO DEL SESSION STORAGE y Si el arreglo es nulo hay que crearlo. 
+    const tareas = JSON.parse(sessionStorage.getItem("TareasPorRealizar"))  || [];
+
+    //2. Permitir que el usuario escriba el contenido de la tarea nueva y guardar eso en una variable.
+    let nuevaTarea = window.prompt("Nueva tarea: ");
+
+
+    //3.AGREGAR TAREA AL FINAL si no es null Y QUE INGRESEN ALGO XD!!! tenía el problema de que podían ingresar n espacios vacíos. Así que requiero de expresiones regulares para evitar eso, es la primera vez que implemento esto en javascript pero me alegra aplicar conocimientos de ciencias de la computación 1 <3 
+    
+    const expresionRegular =  /^[A-Z]|^[0-9]|^[a-z]/; //jsjs virginia, espero no errarle :3 Pero es que empiece con mayuscula, minuscula o un digito la cadena. 
+
+    if (nuevaTarea != null && expresionRegular.test(nuevaTarea)) {
+        
+        tareas.push(nuevaTarea); 
+
+        //4.Crear id 
+        let  idNuevo = (tareas.length - 1).toString();
+
+        //5.Mostrar nueva tarea. 
+        let identificadorCheck = "checkbox_para_tomar_tarea" + tareas.length;
+    
+        document.getElementById("to-do-list").innerHTML += `<div class="list-item-checkbox"> <li id="${idNuevo}">${nuevaTarea}</li><input class="tomaste-tarea" type="checkbox" id="${identificadorCheck}"> </div>`;
+
+
+        //6.Guardar cambios en el session Storage
+        sessionStorage.setItem("TareasPorRealizar", JSON.stringify(tareas));    
+    }
+ 
+
+}
