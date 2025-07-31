@@ -77,7 +77,7 @@ function mostrarPopUp() {
 document.getElementById("stop").addEventListener("click", cambiarPagina);
 
 function cambiarPagina() {
-    window.location.assign("/fin.html");
+    window.location.assign("fin.html");
 }
 
 
